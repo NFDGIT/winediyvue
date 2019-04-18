@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <img alt="Vue logo" src="./assets/logo.png">
+     
+    <!-- <WDDiy type="1" />  -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import WDDiy from './components/WDDiy.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    WDDiy
+  },
+  metaInfo:{
+    title:'hello swift'
   }
+
 }
 </script>
+
+
 
 <style>
 #app {

@@ -2,7 +2,9 @@
     <draggable v-model="colors" @update="datadragEnd" :options = "{animation:500}">
             <transition-group>
                 <div v-for="element in parameters" :key="element" class = "drag-item">
-                    {{element.title}}
+                    <p v-if="element.type == 0">{{ element.textPara.title }}</p>
+                    <img v-else style="width:auto;height:auto;max-width:100%;max-height:100%;overflow:hidden;" :src='element.imgPara.img'/>
+         
                 </div>
             </transition-group>
      </draggable>

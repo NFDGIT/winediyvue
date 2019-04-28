@@ -1,35 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-     
-    <!-- <WDDiy type="1" />  -->
-  </div>
+<div class="app" ref="app"  >
+
+      <router-view></router-view>
+
+</div>
 </template>
-
 <script>
-import WDDiy from './components/WDDiy.vue'
-
 export default {
-  name: 'app',
-  components: {
-    WDDiy
-  },
-  metaInfo:{
-    title:'hello swift'
-  }
 
+  mounted(){
+      this.$refs.app.style.height = window.innerHeight+ 'px';
+      this.$router.push({path:'/mainView'});
+  }
 }
 </script>
 
-
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped lang="less">
+.app{
+  margin: 1px;
+  width: 100%;
+  background-color: @color-bg;
 }
 </style>

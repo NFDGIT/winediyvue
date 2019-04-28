@@ -1,13 +1,5 @@
 <template>
-    <div class="touchView" >
-        <!-- <PHDiv :text = "angle"></PHDiv> -->
-        <div>
-         <!-- tranlateX:{{ parameter.deltaX }}  tranlateY: {{ parameter.deltaY }} <br>
-         angle:{{ parameter.angle }}<br>
-         scale: {{ parameter.scale }} -->
-         </div>
-
-
+   <div class="touchView" >
    </div>    
 </template>
 <script>
@@ -29,10 +21,7 @@ export default {
     },
     methods:{
         touchStart(){
-            
-  
 
-            
         }
     },
     mounted() {
@@ -50,7 +39,7 @@ export default {
                 // _this.$emit("touchCallBack",'');
                 // alert('helo swift');
                 evt.preventDefault();
-                
+
             },
             // longTap: function () {
             //     // alert('long tap')
@@ -64,7 +53,9 @@ export default {
             },
     
             pinch: function (evt) {
+              
                 _this.parameter.scale = evt.scale;
+                // alert(evt.scale);
                 _this.$emit("touchMoveCallBack",'');
                 // _this.parameter.scale = 1
     

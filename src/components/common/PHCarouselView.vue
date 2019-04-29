@@ -3,6 +3,11 @@
     <div :style="scrollStyle" >
         <PHImg v-for="(item,index) of imgs" :key="index" :style="imgStyle" :src="item" ></PHImg>
     </div>
+    
+    <div :style="pageVievStyle"> 
+       <div v-for="(item,index) in imgs" :key="'page' + index" :style="index == selectedIndex ? pagePointSelectedStyle : pagePointStyle"> </div>
+    </div>
+
 </div>
 </template>
 <script>
@@ -14,14 +19,17 @@ export default {
     components:{
         PHImg
     },
-
+     
     data(){
         return{
+            selectedIndex:0,
             phcarousel:{
                 height: 100 + '%',
-                width: 100 + '%'
+                width: 100 + '%',
+                position:'relative',
             },
             scrollStyle:{
+                // position:'absolute',
                 width:100 + "%",
                 height:100 + "%",
             },
@@ -30,7 +38,35 @@ export default {
                 width:  100 + '%',
                 height: 100 + '%',
             },
- 
+            pageVievStyle:{
+                position:'absolute',
+                // backgroundColor:'red',
+    
+                bottom:'0',
+                left:'0',
+                right:'0',
+                margin:'auto',
+            },
+            pagePointStyle:{
+                width:'10px',
+                height:'10px',
+                marginLeft:'10px',
+                marginTop:'5px',
+                marginBottom:'0px',
+                backgroundColor:'gray',
+                borderRadius:'50%',
+                display:'inline-block'
+            },
+            pagePointSelectedStyle:{
+                width:'10px',
+                height:'10px',
+                marginLeft:'10px',
+                marginTop:'5px',
+                marginBottom:'0px',
+                backgroundColor:'orange',
+                borderRadius:'50%',
+                display:'inline-block'
+            }
           
 
         }
@@ -53,3 +89,4 @@ export default {
 <style scoped>
 
 </style>
+

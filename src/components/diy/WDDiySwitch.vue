@@ -1,6 +1,6 @@
 <template>
     <div :style="wddiySwitchStyle">
-       <button  v-for="(item,index) of ['酒箱','酒盒','酒瓶']" :key="index"  @click="selectCell(index)" :style="index == selectedIndex ?  wddiySwitchButtonSelected : wddiySwitchButton">{{ item }}</button>
+       <div  v-for="(item,index) of ['酒箱','酒盒','酒瓶']" :key="index"  @click="selectCell(index)" :style="index == selectedIndex ?  wddiySwitchButtonSelected : wddiySwitchButton">{{ item }}</div>
     </div>
 </template>
 <script>
@@ -11,12 +11,15 @@ export default {
             wddiySwitchStyle:{
                 position:'absolute',
                 left:'calc(50% - 95px)',
-                top: '15px',
+                top: '20px',
                 width: '180px',
-                height: '40px',
+                height: '30px',
+                lineHeight: '30px',
                 backgroundColor: 'white',
-                borderRadius:'20px',
-                overflow:'hidden'
+                borderRadius:'15px',
+                overflow:'hidden',
+                textAlign: 'center',
+
             },
             wddiySwitchButton:{
                 fontSize:'13px',
@@ -36,7 +39,7 @@ export default {
                 backgroundColor:'white',
                 border:'none',
                 borderWidth: '0px',
-                color: 'red'
+                color: '#fc6721'
             }
         }
     },
@@ -44,6 +47,8 @@ export default {
         selectCell(index){
             // alert(index);
             this.selectedIndex = index;
+            this.$emit('selectCell',index);
+
         }
     }
 }

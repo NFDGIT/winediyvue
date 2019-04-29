@@ -1,16 +1,31 @@
 <template>
-<div class="app" ref="app"  >
-
+<div class="app" ref="app" :style="appStyle" >
       <router-view></router-view>
-
 </div>
 </template>
 <script>
 export default {
-
+  data(){
+      return{
+        appStyle:{
+            margin: '0px',
+            width: '100%',
+            height: "0px"
+            // backgroundColor: 'red'
+        }
+      }
+  },
   mounted(){
-      this.$refs.app.style.height = window.innerHeight+ 'px';
-      this.$router.push({path:'/mainView'});
+      let _this = this
+      this.appStyle.height =  window.innerHeight+ 'px';
+      this.$router.push({path:'/mainView'});    
+
+
+
+      document.body.onresize = function (){
+        _this.appStyle.height =  window.innerHeight+ 'px';
+      }
+
   }
 }
 </script>

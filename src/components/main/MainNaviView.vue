@@ -2,12 +2,24 @@
 <div class="mainNavi">
     
   <div class="mainNaviSearch" @click="searchClick">搜索用户</div>
-  <div class="mainNaviMessage" @click="messageClick">消息</div>
+  <div class="mainNaviMessage" @click="messageClick">
+      <PHImg :src='messageImg' style="width:25px;height:25px;"></PHImg>
+  </div>
 
 </div> 
 </template>
 <script>
+import PHImg from "@/components/common/PHImg.vue"
+
 export default {
+    components:{
+      PHImg,
+    },
+    data(){
+        return{
+            messageImg:require('@/assets/imgs/message.png'),
+        }
+    },
     methods:{
         messageClick(){
             this.$emit('messageClick','')
@@ -37,5 +49,8 @@ export default {
 }
 .mainNaviMessage{
    line-height: 30px;text-align:center;width:40px;height:30px;position:relative; float:right;background-color: white;border-color: aliceblue;font-size: 14px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 </style>

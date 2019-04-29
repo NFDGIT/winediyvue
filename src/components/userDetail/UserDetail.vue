@@ -7,9 +7,11 @@
         <div style="width:100%;overflow:hidden;">
             <PHImg class="headBack" :src="param" ></PHImg> 
 
-            <div class="itemText" v-for="(item,index) of datas" :key="index" >{{ item }}  </div>
+            <div class="itemText" v-for="(item,index) of datas" :key="'text' + index" >{{ item }}  </div>
+            
 
-            <MainCommendGoodsCell v-for="(item,index) of commendGoods" :key="index" :item='item' @jumpToGoodsDetail='jumpToGoodsDetail'>
+            <div style="width:100%;height:30px;line-height:30px;background-color:rgba(255,255,255,1);text-align:center;">用户作品</div>   
+            <MainCommendGoodsCell v-for="(item,index) of commendGoods" :key="'goods' + index" :item='item' @jumpToGoodsDetail='jumpToGoodsDetail'>
             </MainCommendGoodsCell>
 
         </div>

@@ -18,6 +18,8 @@ import ActivityCenter from "@/components/activityCenter/ActivityCenter"
 import ClassIntroduce from "@/components/classIntroduce/ClassIntroduce"
 import NoviceRaider from "@/components/noviceRaider/NoviceRaider"
 
+// 预览
+import PreView from "@/components/preview/PreView"
 
 // 我的
 import MySavedWorks  from '@/components/myWorks/MySavedWorks'
@@ -93,6 +95,13 @@ const router = new VueRouter({
         name: 'classIntroduce',
         component: ClassIntroduce
       },
+      // diy
+      {
+        path: '/preView',
+        name: 'preView',
+        component: PreView
+      },
+
 
       // 我的
       {

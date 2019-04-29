@@ -1,7 +1,7 @@
 <template>
 <div v-bind:class="[DiyItem,index == selectedIndex  ? top : '']"  @click="switchLayer" :style="{transform:'rotateZ('+layerParameter.angle+'deg)' + 'scale('+layerParameter.scale+')',transformOrigin:'centerX centerY',left:layerParameter.translateX+'px',top:layerParameter.translateY+'px'}" >
     <img v-if="layerParameter.type == 1"  :src="layerParameter.imgPara.img" style="width:auto;height:auto;max-width:100%;max-height:100%;"/>
-    <p v-if="layerParameter.type == 0">{{ layerParameter.textPara.title }}</p>
+    <p v-if="layerParameter.type == 0" >{{ layerParameter.textPara.title }}</p>
     <!-- <canvas ref="canvas" id="cancas"  class="canvas-item">
     </canvas> -->
 </div>

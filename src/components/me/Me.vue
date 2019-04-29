@@ -6,15 +6,17 @@
     <div  style="overflow:hidden;">
 
       <div class="setBtn" @click="jumpToSetting">
+        <PHImg :src='setImg' style="width:30px;height:30px;"></PHImg>
       </div>
       <div class="messageBtn" @click="jumpToMessage">
+        <PHImg :src='messageImg' style="width:30px;height:30px;"></PHImg>
       </div>
 
       
       <MeHeadView :userInfo='userInfo'></MeHeadView>
-      <MeWorksItem  v-for="(item,index) in worksItems" :key="index" :item='item' :index='index' @selectCell="selectWorksCell"></MeWorksItem>
+      <MeWorksItem  v-for="(item,index) in worksItems" :key="'works' + index" :item='item' :index='index' @selectCell="selectWorksCell"></MeWorksItem>
       <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>  
-      <MeFuncItem v-for="(item,index) in funcItems" :key="index" :item='item' ></MeFuncItem>
+      <MeFuncItem v-for="(item,index) in funcItems" :key="'func' + index" :item='item' ></MeFuncItem>
     </div>
  
    
@@ -22,20 +24,26 @@
     
 </template>
 <script>
+
+
 import BScroll from 'better-scroll'
 
+import PHImg from "@/components/common/PHImg.vue"
 import MeHeadView from  '@/components/me/MeHeadView.vue'
 import MeWorksItem from  '@/components/me/MeWorksItem.vue'
 import MeFuncItem from  '@/components/me/MeFuncItem.vue'
 
 export default {
     components:{
+       PHImg,
        MeHeadView,
        MeWorksItem,
        MeFuncItem,
     },
     data(){
       return{
+        setImg:require('@/assets/imgs/set.png'),
+        messageImg:require('@/assets/imgs/message.png'),
         userInfo:{name:'彭辉'},
         funcItems:[{title:'订单'},{title:'购物车'},{title:'优惠券'},{title:'邀请好友'},{title:'我的喜欢'},{title:'我的收益'},{title:'我的好友'}],
         worksItems:[{title:'保存'},{title:'作品'}]
@@ -79,17 +87,23 @@ export default {
    width: 40px;
    height: 40px;
    position:absolute;
-   left: 20px;
-   top: 20px;
-   background-color:white;
+   left: 10px;
+   top: 10px;
 
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 .messageBtn{
    width: 40px;
    height: 40px;
    position:absolute;
-   right: 20px;
-   top: 20px;
-   background-color:white;
+   right: 10px;
+   top: 10px;
+
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 </style>

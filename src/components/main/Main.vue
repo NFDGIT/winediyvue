@@ -11,11 +11,14 @@
 
      <PHCarouselView :imgs="['','','']" style="height:150px;width:100%;"></PHCarouselView>
      <MainFuncView @selectCell="funcClick"></MainFuncView>
-     <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>     
-     <MainCommendUserCell v-for="(item,index) in commendUsers" :key="index" :item='item' @jumpToUserDetail='jumpToUserDetail'>
+
+     <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>  
+     <MainCommendUserCell v-for="(item,index) of commendUsers" :key="'user' + index" :item='item' @jumpToUserDetail='jumpToUserDetail'>
      </MainCommendUserCell>
+
      <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>   
-     <MainCommendGoodsCell v-for="(item,index) in commendGoods" :key="index" :item='item' @jumpToGoodsDetail='jumpToGoodsDetail'>
+     <MainCommendGoodsCell v-for="(item,index) of commendGoods" :key="'goods' + index" :item='item' @jumpToGoodsDetail='jumpToGoodsDetail'>
+
      </MainCommendGoodsCell>
   </div>
 </div>
@@ -24,6 +27,7 @@
 </div>
 </template>
 <script>
+
 
 
 
@@ -50,6 +54,7 @@ export default {
     },
     data(){
       return{
+
         commendUsers:[{name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
               {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:''},
               {name:'孙悟空',desc:'五百年前大闹天通',headImg:'',goodsImg:''}],

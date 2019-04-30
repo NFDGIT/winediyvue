@@ -1,10 +1,10 @@
 <template>
     <div style="">
         <button class="mainFuncItem" v-for="(item,index) of ['品类介绍','新手攻略','活动中心']" :key="index" @click="selectCell(index)">
-            <div>
-                <PHImg class="itemImg" :src="item"  /> 
-                <div class="itemText">{{item}}</div>
-            </div>
+ 
+            <PHImg class="itemImg" :src="item"  /> 
+            <div class="itemText">{{item}}</div>
+    
         </button>
     </div>    
 </template>
@@ -36,7 +36,9 @@ export default {
     text-align: center;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
+
     align-items: center;
 }
 .itemImg{

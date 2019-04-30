@@ -1,8 +1,8 @@
 <template>
 <div class="meFuncItem">
 
-    <div style="text-align:center;">
-            <PHImg class="itemImg" :src="item" />
+    <div style="display:flex;flex-direction:column; align-items: center;">
+            <PHImg class="itemImg" :src="item"/>
             <div class="itemText">{{item.title}}</div>
     </div>
 
@@ -37,6 +37,7 @@ export default {
 .itemText{
     font-size: @size-middle;
     color: @color-black;
+   
 }
 
 </style>

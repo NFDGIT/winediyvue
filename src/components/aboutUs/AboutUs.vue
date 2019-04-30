@@ -8,7 +8,7 @@
 
     <div style="width:100%;">
         <br>
-        <div> 酒制 app</div>
+        <div style="text-align:center;"> 酒制 app</div>
    
     </div>
 </div>

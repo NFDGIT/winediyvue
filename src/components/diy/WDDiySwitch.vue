@@ -29,9 +29,11 @@ export default {
                 backgroundColor:'white',
                 border:'none',
                 borderWidth: '0px',
-                color: 'black'
+                color: 'black',
+                
             },
             wddiySwitchButtonSelected:{
+
                 fontSize:'13px',
                 float:'left',
                 width:'33%',

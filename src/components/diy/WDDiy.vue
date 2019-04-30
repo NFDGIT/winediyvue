@@ -12,11 +12,15 @@
     
 
   
-
+   <!-- 外层div -->
    <div :style="drawBackViewStyle" >
+      <!--  填充整个 外层div  -->
+      <div style="position:absolute;width:100%;height:100%;background-color:red;">
+
       <!-- :layerParameters='parameter1'  -->
       <WDDiyBack :style="wddiybackStyle" ref="wddiyback"  type="0" title="d" ></WDDiyBack>
       <PHTouchPad :style="touchPadStyle" ref="touchpad"  @touchMoveCallBack="touchMoveCallBack" ></PHTouchPad>
+      </div>
    </div>
 
 
@@ -140,11 +144,11 @@ export default {
            position:'relative',
    
            overflow:'hidden',
-           left:'40px',
-           top:'100px',
-           height:'calc(100% - 200px)',
-           width: 'calc(100% - 80px)',
-           backgroundColor: 'yellow',
+         //   left:'40px',
+         //   top:'100px',
+         //   height:'calc(100% - 200px)',
+         //   width: 'calc(100% - 80px)',
+         //   backgroundColor: 'yellow',
         },
 
         wddiybackStyle:{
@@ -195,23 +199,74 @@ export default {
         }
 
 
-        this.refreshDrawLayer();
+        this.refreshDrawLayer(index);
 
      },
-     refreshDrawLayer(){
-      this.wddiybackStyle.left = this.touchPadStyle.left = '25%'
-      this.wddiybackStyle.top = this.touchPadStyle.top = '20% '
-      this.wddiybackStyle.width = this.touchPadStyle.width = '50%'
-      this.wddiybackStyle.height = this.touchPadStyle.height = '50%'
+     refreshDrawLayer(index){
+      this.drawBackViewStyle.marginLeft = this.drawBackViewStyle.marginRight  =  'auto';
+      this.drawBackViewStyle.marginTop = '20%';
+      // this.drawBackViewStyle.marginRight = 'auto';
+
+
+      if (index == 0 ) {
+
+
+         // this.drawBackViewStyle.left = '10%';
+         this.drawBackViewStyle.width = '80%';
+         this.drawBackViewStyle.height = '0px';
+         this.drawBackViewStyle.paddingBottom = '80%';
+         this.drawBackViewStyle.paddingRight = '0';
+
+
+         this.wddiybackStyle.top = this.touchPadStyle.top = '10%'
+         this.wddiybackStyle.height = this.touchPadStyle.height = '80%'
+
+         this.wddiybackStyle.left = this.touchPadStyle.left = '10%'
+         this.wddiybackStyle.width = this.touchPadStyle.width = '80%'
+      }else if(index == 1){
+
+         this.drawBackViewStyle.height = '60%';
+         // this.drawBackViewStyle.left = '10%';
+         this.drawBackViewStyle.width = '0px';
+         this.drawBackViewStyle.paddingBottom = '0';
+         this.drawBackViewStyle.paddingRight = '60%';
+
+
+         this.wddiybackStyle.top = this.touchPadStyle.top = '20%'
+         this.wddiybackStyle.height = this.touchPadStyle.height = '50%'
+
+         this.wddiybackStyle.left = this.touchPadStyle.left = '25%'
+         this.wddiybackStyle.width = this.touchPadStyle.width = '50%'
+      }else if(index == 2){
+         this.drawBackViewStyle.height = '60%';
+         // this.drawBackViewStyle.left = '10%';
+         this.drawBackViewStyle.width = '0px';
+         this.drawBackViewStyle.paddingBottom = '0';
+         this.drawBackViewStyle.paddingRight = '40%';
+
+
+         this.wddiybackStyle.top = this.touchPadStyle.top = '60%'
+         this.wddiybackStyle.height = this.touchPadStyle.height = '20%'
+
+         this.wddiybackStyle.left = this.touchPadStyle.left = '20%'
+         this.wddiybackStyle.width = this.touchPadStyle.width = '60%'   
+      }
+
+
+
 
       this.$refs.wddiyback.selectedIndex = this.$refs.wddiyback.layerParameters.length-1;
       this.$refs.layermanager.parameters =  this.$refs.wddiyback.layerParameters;
      },
 //    预览
      preview(){
+              
+          var params = [];
+          params.push(this.parameter0);
+         //  params.push(this.parameter1);
           this.$router.push({name:'preView',
                              params:{
-                                layerParameters:[this.parameter0,this.parameter1,this.parameter2]
+                                layerParameters:params
                              }
           });
      },
@@ -287,10 +342,6 @@ export default {
         click:true
       });
       this.changeSwitch(0);     
-
-
-
-
 
   }
    

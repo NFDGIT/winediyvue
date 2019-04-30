@@ -50,7 +50,7 @@ export default {
       PHCarouselView,
       MainFuncView,
       MainCommendUserCell,
-      MainCommendGoodsCell
+      MainCommendGoodsCell,
     },
     data(){
       return{
@@ -113,6 +113,15 @@ export default {
         this.scroll = new BScroll(this.$refs.wrapper,{
           click:true
         });
+
+        
+        
+
+        //  alert(alertview);
+        // let alertview = new PHAlertView();
+        // alert('before');
+        // alertview.show();
+        // alert('after');
         // this.jumpToUserDetail();
     }
 

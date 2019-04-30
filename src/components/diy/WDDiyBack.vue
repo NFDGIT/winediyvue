@@ -5,13 +5,25 @@
 </template>
 <script>
 
-import WDDiyItem from './WDDiyItem.vue'
+import WDDiyItem from '@/components/diy/WDDiyItem.vue'
 // import AlloyFinger from 'alloyfinger'
 export default {
     components:{
         WDDiyItem
     },
-    props:['type'],
+    props:['type','params'],
+    // ,'layerParameters'
+    watch:{
+        params:{
+            immediate:true,
+            handler:function (newVal)
+            {
+                this.layerParameters = newVal;
+                // alert(this.layerParameters);
+            }
+        
+        }
+    },
     data (){
         return {
         selectedIndex:0,

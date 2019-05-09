@@ -19,7 +19,7 @@ export default {
             handler:function (newVal)
             {
                 this.layerParameters = newVal;
-                // alert(this.layerParameters);
+
             }
         
         }

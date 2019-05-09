@@ -1,6 +1,17 @@
 <template>
   <div id="app" ref="app">
-    <router-view ></router-view>
+     
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive">
+        <!-- 这里是会被缓存的视图组件 -->
+      </router-view>
+    </keep-alive>
+
+    <router-view v-if="!$route.meta.keepAlive">
+          <!-- 这里是不被缓存的视图组件 -->
+    </router-view>
+
+
     <Tabbar @itemClick="tabbarItemClick" :items="tabbarItems" :normalColor='"lightGray"' :selectedColor='"black"'></Tabbar>
   </div>
 </template>
@@ -27,26 +38,28 @@ export default {
       
       if (index == 0)
       {
-         this.$router.push({path:'/tabbarMain'})
+         this.$router.push({path:'/tabbar/main'})
       }
       if (index == 1)
       {
-         this.$router.push({path:'/tabbarWddiy'})
+         this.$router.push({path:'/wddiy'})
       }
       if (index == 2)
       {
-         this.$router.push({path:'/tabbarMe'})
+         this.$router.push({path:'/tabbar/me'})
       }
   
     },
     
   },
+  created(){
+      // alert('created');
+  },
   mounted(){
-
       // setTimeout(() => {
       //   this.tabbarItemClick(0);          
       // }, 2);
-
+      // alert('mounted');
   }
 
 

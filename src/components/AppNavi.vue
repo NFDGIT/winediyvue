@@ -8,6 +8,11 @@
         </div>
 
         <div class="app-navi-title"> {{ title }}</div>
+
+        <div class="app-navi-right" @click="rightClick" >
+            {{ rightTitle }}
+            <!-- <PHImg  :src="backImg"  style="width:100%;height:100%;"/> -->
+        </div>
     </div>
 </template>
 <script>
@@ -15,7 +20,7 @@ import PHImg from "@/components/common/PHImg.vue"
 
 
 export default {
-    props:['title'],
+    props:['title','rightTitle'],
     components:{
         PHImg
     },
@@ -29,6 +34,9 @@ export default {
     methods:{
         goBack(){
             this.$router.go(-1);
+        },
+        rightClick(){
+            this.$emit('rightClick','');
         }
     },
     mounted(){
@@ -56,6 +64,19 @@ export default {
    font-size: @size-big;
    color: @color-black;
    text-align:center;
+
    height:100%;
+//    line-height: 100%;
+}
+.app-navi-right{
+    width: 40px;
+    height: 30px;
+    top: 10px;
+    right: 5px;
+    // background-color: @color-bg;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    line-height: 30px;
 }
 </style>

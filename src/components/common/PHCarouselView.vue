@@ -1,7 +1,8 @@
 <template>
 <div :style="phcarousel" ref="phcarousel">
+
     <div :style="scrollStyle" >
-        <PHImg v-for="(item,index) of imgs" :key="index" :style="imgStyle" :src="item" ></PHImg>
+        <PHImg v-for="(item,index) in imgs" :key="index" :style="imgStyle" :src="item" ></PHImg>
     </div>
     
     <div :style="pageVievStyle"> 
@@ -40,7 +41,6 @@ export default {
             },
             pageVievStyle:{
                 position:'absolute',
-                // backgroundColor:'red',
     
                 bottom:'0',
                 left:'0',
@@ -73,12 +73,17 @@ export default {
     },
     mounted(){
 
-        // alert(this.imgs.length);
         this.scrollStyle.width  = 100 * this.imgs.length + '%';
         this.imgStyle.width = 100 / this.imgs.length + '%';
 
         this.scroll = new BScroll(this.$refs.phcarousel,{
-          scrollX:true
+          scrollX:true,
+          scrollY:false,
+          mouseWheel: true,
+          snap:{
+            //   threshold:0.3,
+            //   speed: 400,
+          }
         });
 
 

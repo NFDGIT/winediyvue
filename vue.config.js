@@ -13,7 +13,24 @@ module.exports = {
           .end()
       })
     },
+    lintOnSave: false,
+    baseUrl: process.env.NODE_ENV === 'production' ? './' : '/',
     devServer:{
       disableHostCheck: true,    
-    }
+  
+      proxy: {
+          '/api': {
+            target: 'https://www.baidu.com/',  // target host
+            ws: true,  // proxy websockets
+            changeOrigin: true,  // needed for virtual hosted sites
+            pathRewrite: {
+              '^/api': ''  // rewrite path
+            }
+          },
+      },  // 配置多个代理
+      
+
+
+    },
+
   }

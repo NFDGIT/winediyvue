@@ -1,21 +1,16 @@
 <template>
 <div class="content" ref='content' >
 
-<AppNavi title="预览"></AppNavi>
+<AppNavi title="预览" :rightTitle="'保存'" @rightClick='rightClick'></AppNavi>
 
 <div class="wrapper" ref="wrapper" >
+<div>
 
-
-    
-   <!-- <div style="width:100%;background-color:yellow;overflow: hidden;">
-     <div style="width:80%;height:500px;background:red;" v-for="(item,index) of datas" :key="index" >
-           <WDDiyBack   style="width:80%;height:80%;" :params='item'></WDDiyBack>
-     </div>
-
-   </div> -->
-
+     <PHCarouselView :imgs="datas" 
+     style="height:300px;width:100%;">
+     </PHCarouselView>
+</div>    
 </div>
-
 
 </div>    
 </template>
@@ -24,13 +19,16 @@ import BScroll from 'better-scroll'
 
 import AppNavi from '@/components/AppNavi.vue'
 
+import PHCarouselView from "@/components/common/PHCarouselView.vue"
 
-import WDDiyBack from '@/components/diy/WDDiyBack.vue'
+// import PHImg from "@/components/common/PHImg.vue"
+
+// import WDDiyBack from '@/components/diy/WDDiyBack.vue'
 export default {
 
    components:{
     AppNavi,
-    WDDiyBack
+    PHCarouselView,
    },
    data(){
        return {
@@ -38,24 +36,46 @@ export default {
                 position:'absolute',
                 left:0 + 'px',
             },
-            datas:[]
+            datas:['','','']
        }
    },
+   methods:{
+      rightClick(){
+
+       
+          let key = "localWorksKey";
+
+          let localWorks = this.getLocalItem(key);
+          if (localWorks == null){
+            localWorks = []
+          }
+
+          let worksData = {'id':'1','name':'彭辉作品','desc':'个人白酒定制','works':this.datas};
+          localWorks.push(worksData);
+          this.setLocalItem(key,localWorks);
+
+          // alert(this.getLocalItem(key).length);
+       
+          if (confirm('保存成功，是否去查看')){
+              // alert('查看成功');
+              this.$router.push({name:'goodsDetail',params:{
+                data:worksData
+              }})
+
+          }
+
+      },    
+   },
    mounted(){
-
-    //   this.wddiybackStyle.left  = '25%'
-    //   this.wddiybackStyle.top = '20% '
-    //   this.wddiybackStyle.width =  '50%'
-    //   this.wddiybackStyle.height =  '50%'
-
       this.scroll = new BScroll(this.$refs.wrapper,{
+
       });
-      this.datas = this.$route.params.layerParameters;
-    //   let params = this.datas[0];
-
-
-    //   this.$refs.wddiyback1.layerParameters = params;
-    //   alert(this.$refs.wddiyback1);      
+      
+      // this.datas = []
+      // alert(this.$route.params.layerParameters[0]);
+      this.datas =   this.$route.params.layerParameters;
+      // alert(this.datas.length)
+     
    }
 }
 </script>

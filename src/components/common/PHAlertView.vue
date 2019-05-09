@@ -7,7 +7,6 @@
 export default {
  methods:{
     show(){
-        alert('alertview');
        document.body.appendChild(this.$refs.alertView);
     },
     hidden(){

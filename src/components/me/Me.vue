@@ -16,7 +16,7 @@
       <MeHeadView :userInfo='userInfo'></MeHeadView>
       <MeWorksItem  v-for="(item,index) in worksItems" :key="'works' + index" :item='item' :index='index' @selectCell="selectWorksCell"></MeWorksItem>
       <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>  
-      <MeFuncItem v-for="(item,index) in funcItems" :key="'func' + index" :item='item' ></MeFuncItem>
+      <MeFuncItem v-for="(item,index) in funcItems" :key="'func' + index" :item='item' @selectCell="selectFuncCell(index)" ></MeFuncItem>
     </div>
  
    
@@ -64,9 +64,40 @@ export default {
         }else
         {
            this.$router.push({path:'/myWorks'});
+        }   
+      },
+      selectFuncCell(index){
+
+
+        if (index === 0){
+            this.$router.push({
+               path:'/myOrder'
+            })
+        }else if (index === 1){
+            this.$router.push({
+               path:'/buyCar'
+            })
+        }else if (index === 2){
+            this.$router.push({
+               path:'/discountCoupon'
+            })
+        }else if (index === 3){
+            this.$router.push({
+               path:'/inviteFriend'
+            })
+        }else if (index === 4){
+            this.$router.push({
+               path:'/myFavorite'
+            })
+        }else if (index === 5){
+            this.$router.push({
+               path:'/myIncome'
+            })
+        }else if (index === 6){
+            this.$router.push({
+               path:'/myFriend'
+            })
         }
-              
-              
       }
     },
     mounted(){

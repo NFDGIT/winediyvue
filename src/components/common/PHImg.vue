@@ -1,5 +1,5 @@
 <template>
-<div class="PHImgBack">
+<div class="PHImgBack" @click="click">
 <img class="PHImgContent" :src='src' alt="" :onerror="defaultImg">
 </div>
 </template>
@@ -11,6 +11,11 @@ export default {
             // + require('@/assets/imgs/default.png') +
             defaultImg: 'this.src=" '+ require('@/assets/imgs/default.png') +'   "'
         }
+    },
+    methods:{
+       click(){
+           this.$emit('click');
+       }
     }
 }
 </script>

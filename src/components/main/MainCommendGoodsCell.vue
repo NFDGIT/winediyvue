@@ -46,8 +46,9 @@ export default {
 
 .goodsImg{
     margin-top: 10px;
+    margin-left: 10px;
     background-color:@color-bg;
-    width: 90%;
+    width: calc(100% - 20px);
     height: 200px;
     border-radius: 10px;
 }

@@ -1,7 +1,7 @@
 <template>
 <div class="meFuncItem">
 
-    <div style="display:flex;flex-direction:column; align-items: center;">
+    <div style="display:flex;flex-direction:column; align-items: center;" @click="selectCell">
             <PHImg class="itemImg" :src="item"/>
             <div class="itemText">{{item.title}}</div>
     </div>
@@ -15,6 +15,11 @@ export default {
     props:['item'],
     components:{
         PHImg
+    },
+    methods:{
+        selectCell(){
+            this.$emit('selectCell','');
+        }
     }
 }
 </script>

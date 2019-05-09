@@ -27,15 +27,36 @@ import MyWorks from '@/components/myWorks/MyWorks'
 import Setting from '@/components/setting/Setting'
 import AboutUs from '@/components/aboutUs/AboutUs'
 
+import DiscountCoupon from '@/components/discountCoupon/DiscountCoupon' // 优惠券
+import InviteFriend from '@/components/inviteFriend/InviteFriend'       // 邀请好友
+import MyFavorite from '@/components/myFavorite/MyFavorite'             // 我的喜欢
+import MyFriend from '@/components/myFriend/MyFriend'                   // 我的好友
+import MyIncome from '@/components/myIncome/MyIncome'                   // 我的收益
+import MyOrder from '@/components/myOrder/MyOrder'                      // 我的订单
+
+
+// 购物车
+import BuyCar from '@/components/buyCar/BuyCar.vue'
+
 
 
 import VueRouter from 'vue-router'
 import App from '@/App.vue'
 
 import globalVeriable from '@/api/global_veriable.js'
+import fun from '@/common/fun.js'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+
 Vue.prototype.GLOBAL = globalVeriable
 
 Vue.use(VueRouter)
+Vue.use(fun)
+
+axios.defaults.crossDomain=true
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+Vue.use(VueAxios, axios)
 
 const router = new VueRouter({
     mode: 'history',
@@ -49,6 +70,9 @@ const router = new VueRouter({
       {
         path: '/mainView',
         name: 'mainView',
+        meta: {
+          keepAlive: true
+        },
         components:{
           default:MainView
         } 
@@ -119,23 +143,78 @@ const router = new VueRouter({
         name: 'aboutUs',
         component: AboutUs
       },
-      
+      {
+        path: '/discountCoupon',
+        name: 'discountCoupon',
+        component: DiscountCoupon
+      },
+
+      {
+        path: '/inviteFriend',  // 邀请好友
+        name: 'inviteFriend',
+        component: InviteFriend
+      },
+      {
+        path: '/myFavorite',  // 我的喜欢
+        name: 'myFavorite',
+        component: MyFavorite
+      },
+      {
+        path: '/myFriend',  // 我的好友
+        name: 'myFriend',
+        component: MyFriend
+      },
+      {
+        path: '/myIncome',  // 我的收益
+        name: 'myIncome',
+        component: MyIncome
+      },
+      {
+        path: '/myOrder',  // 订单
+        name: 'myOrder',
+        component: MyOrder
+      },
+
+//       import InviteFriend from '@/components/inviteFriend/InviteFriend'       // 邀请好友
+// import MyFavorite from '@/components/myFavorite/MyFavorite'             // 我的喜欢
+// import MyFriend from '@/components/myFriend/MyFriend'                   // 我的好友
+// import MyIncome from '@/components/myIncome/MyIncome'                   // 我的收益
+// import MyOrder from '@/components/myOrder/MyOrder'                      // 我的订单
+
+
+
+
+
+      //  购物车
+      {
+        path: '/buyCar',
+        name: 'buyCar',
+        component: BuyCar
+      },
 
 
       // tabbar 
       {
-        path: '/tabbarMain',
-        name: 'tabbarMain',
+        path: '/tabbar/main',
+        name: 'tabbar/main',
         component:MainView,
+        // meta: {
+        //   keepAlive: true
+        // },
         children: [
           // 当 /user/:id 匹配成功，
           // UserHome 会被渲染在 User 的 <router-view> 中
-          { path: '', component: Main },
+          { path: '',       
+            // meta: {
+            //         keepAlive: true
+            //       }, 
+            component: Main 
+          },
           // ...其他子路由
         ]
       },
       {
-          path: '/tabbarWddiy',
+          path: '/wddiy',
           name: 'wddiy',
           component:WDDiy,
           // component:MainView,
@@ -147,8 +226,8 @@ const router = new VueRouter({
           // ]
       },
       {
-        path: '/tabbarMe',
-        name: 'me',
+        path: '/tabbar/me',
+        name: 'tabbar/me',
         component:MainView,
         children: [
           // 当 /user/:id 匹配成功，

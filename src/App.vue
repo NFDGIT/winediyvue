@@ -1,6 +1,12 @@
 <template>
 <div class="app" ref="app" :style="appStyle" >
-      <router-view></router-view>
+  <keep-alive>
+      <router-view v-if="$route.meta.keepAlive">
+      </router-view>
+  </keep-alive>    
+  <router-view v-if="!$route.meta.keepAlive">
+          <!-- 这里是不被缓存的视图组件 -->
+  </router-view>
 </div>
 </template>
 <script>
@@ -15,17 +21,19 @@ export default {
         }
       }
   },
-  mounted(){
+  created(){
       let _this = this
       this.appStyle.height =  window.innerHeight+ 'px';
       this.$router.push({path:'/mainView'});    
 
-
-
       document.body.onresize = function (){
         _this.appStyle.height =  window.innerHeight+ 'px';
       }
+      // alert('create');
 
+  },
+  mounted(){
+      // alert('mounted')
   }
 }
 </script>

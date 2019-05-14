@@ -22,10 +22,6 @@ export default{
             localStorage.setItem(key, parsed);
         };
         
-
-
     },
-     
-
 }
 

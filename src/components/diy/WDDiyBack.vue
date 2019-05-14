@@ -1,5 +1,5 @@
 <template >
-    <div class="view" >
+    <div :style="diyBackStyle" >
     <WDDiyItem v-for="(layerParameter ,index) of layerParameters" :key="index" :index="index" :selectedIndex="selectedIndex" :layerParameter='layerParameter'></WDDiyItem>
     </div>
 </template>
@@ -28,6 +28,12 @@ export default {
         return {
         selectedIndex:0,
         layerParameters:[],
+        diyBackStyle:{
+            overflow: 'hidden',
+            height: '300px',
+            width: '300px',
+            border:'none',
+        }
         // layerParameters:[
         //     {type:0,
         //     textPara:{
@@ -76,22 +82,27 @@ export default {
 
     },
     methods: {
-    
         addImg(){
             alert();
+        },
+        showBorder(isShow){
+            if (isShow == null || isShow == false){
+                this.diyBackStyle.border = 'none';
+                this.diyBackStyle.overflow = 'hidden';
+            }else{
+                this.diyBackStyle.border = '1px solid yellow';
+                this.diyBackStyle.overflow = 'visible';
+            }
         }
     },
+    mounted(){
+
+    }
 
 
 }
 </script>
 <style scoped>
-    .view{
-       overflow: hidden;
-       background-color:white;
-       height: 300px;
-       width: 300px;
-       /* position: relative; */
-   }
+
 </style>
 

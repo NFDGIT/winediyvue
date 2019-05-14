@@ -37,7 +37,6 @@ export default {
 .diyItemEditViewStyle{
    width: 200px;
    height: 40px;
-   background-color: white;
 }
 .funcItemStyle{
     width:40px;

@@ -38,8 +38,14 @@ export default {
                 // _this.touchStart();
                 // _this.$emit("touchCallBack",'');
                 // alert('helo swift');
+                _this.$emit("touchStartCallBack",'');
                 evt.preventDefault();
-
+ 
+            },
+            touchEnd:function(evt){
+         
+                _this.$emit("touchEndCallBack",'');
+                evt.preventDefault();
             },
             // longTap: function () {
             //     // alert('long tap')

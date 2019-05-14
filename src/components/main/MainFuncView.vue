@@ -1,9 +1,9 @@
 <template>
     <div style="">
-        <button class="mainFuncItem" v-for="(item,index) of ['品类介绍','新手攻略','活动中心']" :key="index" @click="selectCell(index)">
+        <button class="mainFuncItem" v-for="(item,index) of [{title:'品类介绍',img:require('@/assets/imgs/main_category.png')},{title:'新手攻略',img:require('@/assets/imgs/main_strategy.png')},{title:'活动中心',img:require('@/assets/imgs/main_center.png')}]" :key="index" @click="selectCell(index)">
  
-            <PHImg class="itemImg" :src="item"  /> 
-            <div class="itemText">{{item}}</div>
+            <PHImg class="itemImg" :src="item.img"  /> 
+            <div class="itemText">{{item.title}}</div>
     
         </button>
     </div>    
@@ -42,8 +42,8 @@ export default {
     align-items: center;
 }
 .itemImg{
-    height:50px;
-    width:50px;
+    height:40px;
+    width:40px;
     background-color: @color-bg;
 }   
 .itemText{

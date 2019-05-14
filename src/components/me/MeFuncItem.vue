@@ -1,8 +1,8 @@
 <template>
-<div class="meFuncItem">
+<div class="meFuncItem" @click="selectCell">
 
-    <div style="display:flex;flex-direction:column; align-items: center;" @click="selectCell">
-            <PHImg class="itemImg" :src="item"/>
+    <div style="display:flex;flex-direction:column; align-items: center;" >
+            <PHImg class="itemImg" :src="item.img"/>
             <div class="itemText">{{item.title}}</div>
     </div>
 
@@ -29,14 +29,14 @@ export default {
     float: left;
     width: 33%;
     height: 120px;
-    border: 0.1px solid aliceblue;
+    border: 0.1px solid rgba(245,245,245,0.8);
 
     display: flex;
     justify-content: center;
     align-items: center;
 } 
 .itemImg{
-    height:50px;width:50px;
+    height:40px;width:40px;
     background-color: @color-bg;
 }   
 .itemText{

@@ -1,19 +1,21 @@
 <template>
 <div v-bind:class="[DiyItem,index == selectedIndex  ? top : '']"  @click="switchLayer" :style="{transform:'rotateZ('+layerParameter.angle+'deg)' + 'scale('+layerParameter.scale+')',transformOrigin:'centerX centerY',left:layerParameter.translateX+'px',top:layerParameter.translateY+'px'}" >
-    <img v-if="layerParameter.type == 1"  :src="layerParameter.imgPara.img" style="width:auto;height:auto;max-width:100%;max-height:100%;"/>
-    <p v-if="layerParameter.type == 0" >{{ layerParameter.textPara.title }}</p>
-    <!-- <canvas ref="canvas" id="cancas"  class="canvas-item">
-    </canvas> -->
+    <PHImg v-if="layerParameter.type == 1"  :src="layerParameter.imgPara.img" style="width:100%;height:100%;"/>
+    <p v-if="layerParameter.type == 0" :style="{fontSize:layerParameter.textPara.fontSize,color:layerParameter.textPara.color,fontFamily:layerParameter.textPara.fontFamily}">{{ layerParameter.textPara.title }}</p>
+
 </div>
 </template>
 <script>
-
+import PHImg from "@/components/common/PHImg.vue"
 export default {
     props:[
         'index',
         'selectedIndex',
         'layerParameter'
     ],
+    components:{
+        PHImg
+    },
     data(){
         return {
            DiyItem:'DiyItem',
@@ -43,7 +45,7 @@ export default {
 .top{ 
     border-style: solid;
     border-width: 1px;
-    border-color: red;
+    border-color: yellow;
 }
 .canvas-item{
     width: 100%;

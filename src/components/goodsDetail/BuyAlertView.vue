@@ -79,18 +79,18 @@ export default {
         },
         addToCar(){
             
+
+            this.$toasted.error('接口未出').goAway(3000);
         },
         buyNow(){
-
+            this.$router.push({path:'/placeOrder'});
+            // this.$toasted.error('接口未出').goAway(3000);
         },
         show(){
             // alert(this.goodsInfo);
             this.visibilityState = 'visible';
 
             this.$refs.goodsImg.src = this.goodsInfo.works[0];
-
-            // alert(this.goodsInfo.works[0]);
-
 
         },
         hidden(){

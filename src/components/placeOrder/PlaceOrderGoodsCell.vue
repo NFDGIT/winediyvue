@@ -1,12 +1,8 @@
 <template>
     <div class="buyCarCellStyle">
-        
-        <PHImg class="buyCarCellSelectImgStyle" :src="item.isSelected ? selectedImg : selectImg" @click="chooseGoods">
-            
-        </PHImg>
 
 
-        <div style="flex:1;background-color:;height:100px;display:flex;flex-direction:row;align-items:center;">
+        <div style="width:100%;background-color:;height:100px;display:flex;flex-direction:row;align-items:center;">
             <PHImg  class="buyCarCellGoodsImgStyle" :src="item.img">
             </PHImg>     
             <div style="flex:1;margin:10px;font-size:15px;color:rgba(0,0,0,0.8);">
@@ -45,17 +41,10 @@ export default {
    background-color: white;
    margin:10px;
 
-
-   display: flex;
-   flex-direction: row;
 }
-.buyCarCellSelectImgStyle{
 
-    height:100px;
-    width: 50px;
-    /* background-color: red; */
-}
 .buyCarCellGoodsImgStyle{
+    margin-left: 10px;
     margin-top:10px;   
     height:70px;
     width: 70px;

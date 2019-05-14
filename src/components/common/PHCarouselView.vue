@@ -3,6 +3,7 @@
 
     <div :style="scrollStyle" >
         <PHImg v-for="(item,index) in imgs" :key="index" :style="imgStyle" :src="item" ></PHImg>
+        <!-- :contentModel="'fill'" -->
     </div>
     
     <div :style="pageVievStyle"> 

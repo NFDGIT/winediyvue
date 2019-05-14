@@ -1,13 +1,22 @@
 <template>
 <div class="PHImgBack" @click="click">
-<img class="PHImgContent" :src='src' alt="" :onerror="defaultImg">
+<img :style="imgContentStyle" :src='src' alt="" :onerror="defaultImg">
 </div>
 </template>
 <script>
 export default {
-    props:['src'],
+    props:['src','contentModel'],
     data(){
         return{
+            imgContentStyle:{
+                width: 'auto',
+                height: 'auto',
+                maxWidth: '100%',
+                maxHeight: '100%',
+                minWidth:'',
+                minHeight:'',
+
+            },
             // + require('@/assets/imgs/default.png') +
             defaultImg: 'this.src=" '+ require('@/assets/imgs/default.png') +'   "'
         }
@@ -16,6 +25,30 @@ export default {
        click(){
            this.$emit('click');
        }
+    },
+    mounted(){
+            // this.imgContentStyle.maxWidth = '';
+            // this.imgContentStyle.maxHeight = '';
+            // this.imgContentStyle.minWidth = '100%';
+            // this.imgContentStyle.minHeight = '100%';
+            // this.imgContentStyle.width = 'auto';
+            // this.imgContentStyle.height = 'auto';
+
+        if (this.contentModel == 'fill')
+        {
+
+
+            this.imgContentStyle.backgroundSize = 'cover';
+            this.imgContentStyle.width = '100%';
+            this.imgContentStyle.height = '100%';
+            this.imgContentStyle.backgroundRepeat =  'no-repeat';
+            this.imgContentStyle.backgroundPosition = 'center';
+
+
+            alert(this.imgContentStyle);
+        }else{
+
+        }
     }
 }
 </script>
@@ -31,13 +64,6 @@ export default {
 
    /* background-color: aqua; */
 }
-.PHImgContent{
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
 
-    /* background-color: red; */
-}
 
 </style>

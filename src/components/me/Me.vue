@@ -13,9 +13,12 @@
       </div>
 
       
-      <MeHeadView :userInfo='userInfo'></MeHeadView>
+      <MeHeadView :userInfo='userInfo' @editUserInfo="jumpToEditUserInfo"></MeHeadView>
+       
+
       <MeWorksItem  v-for="(item,index) in worksItems" :key="'works' + index" :item='item' :index='index' @selectCell="selectWorksCell"></MeWorksItem>
-      <div style="width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>  
+      
+      <div style="clear:both;width:100%;height:20px;background-color:rgba(0,0,0,0);"></div>  
       <MeFuncItem v-for="(item,index) in funcItems" :key="'func' + index" :item='item' @selectCell="selectFuncCell(index)" ></MeFuncItem>
     </div>
  
@@ -45,11 +48,16 @@ export default {
         setImg:require('@/assets/imgs/set.png'),
         messageImg:require('@/assets/imgs/message.png'),
         userInfo:{name:'彭辉'},
-        funcItems:[{title:'订单'},{title:'购物车'},{title:'优惠券'},{title:'邀请好友'},{title:'我的喜欢'},{title:'我的收益'},{title:'我的好友'}],
-        worksItems:[{title:'保存'},{title:'作品'}]
+        funcItems:[{title:'订单',img:require('@/assets/imgs/me_order.png')},{title:'购物车',img:require('@/assets/imgs/me_shopcar.png')},{title:'优惠券',img:require('@/assets/imgs/me_coupon.png')},{title:'邀请好友',img:require('@/assets/imgs/me_invite.png')},{title:'我的喜欢',img:require('@/assets/imgs/me_favorite.png')},{title:'我的收益',img:require('@/assets/imgs/me_profit.png')},{title:'我的好友',img:require('@/assets/imgs/me_friends.png')}],
+        worksItems:[{title:'保存',img:require('@/assets/imgs/me_save.png')},{title:'作品',img:require('@/assets/imgs/me_publish.png')}]
       }
     },
     methods:{
+      jumpToEditUserInfo(){
+   
+         this.$router.push({path:'/editUserInfo'})
+
+      },
       jumpToSetting(){
          this.$router.push({path:'/setting'})
       },

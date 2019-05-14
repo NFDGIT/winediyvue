@@ -15,7 +15,7 @@
 
     <div class="bottomViewStyle">
         <button style="flex:1;border:0.5px solid rgba(200,200,200,0.8);background-color: rgba(0, 0, 0, 0);"></button>
-        <button style="flex:1;border:0.5px solid rgba(200,200,200,0.8);background-color: rgba(0, 0, 0, 0);"></button>
+        <button style="flex:1;border:0.5px solid rgba(200,200,200,0.8);background-color: rgba(0, 0, 0, 0);" @click="addToFavorite">收藏</button>
         <button style="flex:1;border:0.5px solid rgba(200,200,200,0.8);background-color: rgba(0, 0, 0, 0);" @click="showBuyAlert">加入购物车</button>
         <button style="width:40%;background-color:yellow;text-align:center;line-height:100%;height:100%;border:none;" @click="showBuyAlert">购买</button>
    
@@ -49,6 +49,9 @@ export default {
        }
     },
     methods:{
+        addToFavorite(){
+            this.$toasted.show('接口未出').goAway(1500);
+        },
         jumpToGoodsDetail(){
             this.$router.push({path:'/goodsDetail'});
         },

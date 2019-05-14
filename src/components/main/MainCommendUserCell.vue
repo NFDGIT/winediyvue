@@ -8,7 +8,7 @@
                 <div class="userDesc">{{ item.desc }}</div>
            </div>
        </div>
-       <PHImg class="goodsImg" src="item.goodsImg" />
+       <PHImg class="goodsImg" :src="item.goodsImg" />
        <div style="width:100%;height:1px;background-color:aliceblue;"></div> 
     </div>
 </template>

@@ -1,21 +1,37 @@
 <template>
-<div style="height:100%;width:100%;background-color:white;text-align: center;">
-   <br>
-   <div class="inputBack">
-       <input class="loginInput" type="text" placeholder="请输入用户名">
-       <input class="loginInput" type="text" placeholder="请输入密码">
-   </div>
+<div style="height:100%;width:100%;background-color:white;text-align: center;display:flexed;">
+   <AppNavi :title="'登录'"></AppNavi>
+   <div style="width:100%;flex:1;">
 
-   <div class="loginBtn" @click="login">
-        登录
+         <br>
+         <div class="inputBack">
+            <input class="loginInput" type="text" placeholder="请输入用户名">
+            <input class="loginInput" type="text" placeholder="请输入密码">
+        </div>
+   
+        <div class="loginBtn" @click="login">
+            登录
+        </div>
+        <div style="margin-top:30px;text-align:center;width:calc(100% - 0px);height:30px;line-height:30px;" @click="regist">注册</div>
+
+
    </div>
+  
+
 </div>    
 </template>
 <script>
+import AppNavi from '@/components/AppNavi.vue'
 export default {
+    components:{
+        AppNavi
+    },
     methods:{
         login(){
             this.$router.go(-1)
+        },
+        regist(){
+            this.$router.push({name:'register'});
         }
     },
     mounted(){

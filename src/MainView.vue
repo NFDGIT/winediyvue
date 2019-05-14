@@ -56,6 +56,9 @@ export default {
       // alert('created');
   },
   mounted(){
+      // let param  = this.$route.query.name;
+      // alert(param);
+    
       // setTimeout(() => {
       //   this.tabbarItemClick(0);          
       // }, 2);

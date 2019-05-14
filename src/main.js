@@ -3,7 +3,8 @@ import Vue from 'vue'
 
 
 // 
-import Login from "@/components/login/Login"
+import Login from "@/components/loginAndRegister/Login"
+import Register from "@/components/loginAndRegister/Register"
 import MainView from '@/MainView'
 import WDDiy from '@/components/diy/WDDiy'
 import Main from '@/components/main/Main'
@@ -33,6 +34,9 @@ import MyFavorite from '@/components/myFavorite/MyFavorite'             // 我�
 import MyFriend from '@/components/myFriend/MyFriend'                   // 我的好友
 import MyIncome from '@/components/myIncome/MyIncome'                   // 我的收益
 import MyOrder from '@/components/myOrder/MyOrder'                      // 我的订单
+import EditUserInfo from '@/components/editUserInfo/EditUserInfo'       // 用户信息
+
+import PlaceOrder from '@/components/placeOrder/PlaceOrder'             // 下单
 
 
 // 购物车
@@ -47,12 +51,18 @@ import globalVeriable from '@/api/global_veriable.js'
 import fun from '@/common/fun.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// register the plugin on vue
+import Toasted from 'vue-toasted';
 
 
 Vue.prototype.GLOBAL = globalVeriable
 
 Vue.use(VueRouter)
 Vue.use(fun)
+Vue.use(Toasted,{
+  position:'top-center',
+})
+
 
 axios.defaults.crossDomain=true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -67,6 +77,12 @@ const router = new VueRouter({
         name: 'login',
         component: Login
       },    
+      {
+        path: '/register',
+        name: 'register',
+        component: Register
+      },    
+      
       {
         path: '/mainView',
         name: 'mainView',
@@ -174,6 +190,18 @@ const router = new VueRouter({
         name: 'myOrder',
         component: MyOrder
       },
+      {
+        path: '/placeOrder',  // 下单
+        name: 'placeOrder',
+        component: PlaceOrder
+      },
+      
+      {
+        path: '/editUserInfo',  // 修改用户信息
+        name: 'editUserInfo', 
+        component: EditUserInfo
+      },
+      
 
 //       import InviteFriend from '@/components/inviteFriend/InviteFriend'       // 邀请好友
 // import MyFavorite from '@/components/myFavorite/MyFavorite'             // 我的喜欢

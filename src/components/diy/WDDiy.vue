@@ -1,14 +1,15 @@
  <template>
   <div ref="content" class="content">
-    <div style="position:absolute;left:10px;top:10px;width:30px;height:30px;" @click="back">
-        <PHImg style="width:100%;height:100%;" :src="backImg"></PHImg>
+    <div style="position:absolute;left:10px;top:10px;width:50px;height:30px;" @click="back">
+        退出
+        <!-- <PHImg style="width:100%;height:100%;" :src="backImg"></PHImg> -->
     </div>
 
     <WDDiySwitch @selectCell="changeSwitch"></WDDiySwitch>
 
 
-    <div  style="position:absolute;right:10px;top:10px;width:30px;height:30px;line-height:30px;text-align:center;background-color:white;border:none;font-size:14px;" @click="preview">预览</div>    
-    <div  style="position:absolute;right:50px;top:10px;width:30px;height:30px;line-height:30px;text-align:center;background-color:white;border:none;font-size:14px;" @click="showLayerManager">图层</div>
+    <div  style="position:absolute;right:10px;top:10px;width:50px;height:30px;line-height:30px;text-align:center;background-color:white;border:none;font-size:14px;border-radius:15px;" @click="preview">预览</div>    
+    <div  style="position:absolute;right:10px;top:45px;width:50px;height:30px;line-height:30px;text-align:center;background-color:white;border:none;font-size:14px;border-radius:15px;" @click="showLayerManager">图层</div>
     
 
   
@@ -21,15 +22,15 @@
         <PHImg style="width:100%;height:100%;" :src="bgImg"></PHImg>
         <!-- :layerParameters='parameter1'  -->
         <WDDiyBack :style="wddiybackStyle" ref="wddiyback"  type="0" title="d" ></WDDiyBack>
-        <PHTouchPad :style="touchPadStyle" ref="touchpad"  @touchMoveCallBack="touchMoveCallBack" ></PHTouchPad>
+        <PHTouchPad :style="touchPadStyle" ref="touchpad"  @touchStartCallBack="touchStartCallBack" @touchEndCallBack="touchEndCallBack" @touchMoveCallBack="touchMoveCallBack" ></PHTouchPad>
 
       </div>
    </div>
 
 
-    <button style="width:70px;height:30px;position:absolute;bottom:80px;right:40px;background-color:#fa7b21;border:none;border-radius:15px;color:white;" @click="addTextLayer">添加文字</button> 
+    <button style="width:70px;height:30px;position:absolute;bottom:80px;right:20px;background-color:#fa7b21;border:none;border-radius:15px;color:white;" @click="addTextLayer">添加文字</button> 
 
-    <button style="width:70px;height:30px;position:absolute;bottom:20px;right:40px;background-color:#fa7b21;border:none;border-radius:15px;color:white;">
+    <button style="width:70px;height:30px;position:absolute;bottom:20px;right:20px;background-color:#fa7b21;border:none;border-radius:15px;color:white;">
          选择图片
         <PHSelectFile  @selectFileCallBack="addImgLayer">hello</PHSelectFile>
     </button>
@@ -99,70 +100,45 @@ export default {
          [ 
             {type:0,
             textPara:{
-                title:'0',
-                color:'red',
+                title:'word',
+                color:'black',
+                fontSize:'20px',
+                fontFamily:'',
             },
             angle:0,// 角度
-            scale:0.5,// 缩放
+            scale:1,// 缩放
             translateX:0,// x坐标
             translateY:0,// y坐标
             }
         ],
         parameter1:        
-         [   {type:0,
+         [   
+                        {type:0,
             textPara:{
-                title:'0',
-                color:'red',
+                title:'word',
+                color:'black',
+                fontSize:'20px',
+                fontFamily:'',
             },
             angle:0,// 角度
-            scale:0.5,// 缩放
+            scale:1,// 缩放
             translateX:0,// x坐标
             translateY:0,// y坐标
-            },
-            {type:0,
-            textPara:{
-                title:'1',
-                color:'red',
-            },
-            angle:20,// 角度
-            scale:0.5,// 缩放
-            translateX:0,// x坐标
-            translateY:0,// y坐标
-            },
-            {type:0,
-            textPara:{
-                title:'2',
-                color:'red',
-            },
-            angle:40,// 角度
-            scale:0.5,// 缩放
-            translateX:0,// x坐标
-            translateY:0// y坐标
-            },
-            {type:1,
-            imgPara:{
-                name:'petter.png',
-                img:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3207781657,3460758070&fm=26&gp=0.jpg',
-            },
-            
-            angle:60,// 角度
-            scale:0.5,// 缩放
-            translateX:0,
-            translateY:0,
             }
         ],
         parameter2:        
          [ 
-            {type:1,
-            imgPara:{
-                name:'petter.png',
-                img:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3207781657,3460758070&fm=26&gp=0.jpg',
+                        {type:0,
+            textPara:{
+                title:'word',
+                color:'black',
+                fontSize:'20px',
+                fontFamily:'',
             },
-            
-            angle:60,// 角度
-            scale:0.5,// 缩放
-            translateX:0,
-            translateY:0,
+            angle:0,// 角度
+            scale:1,// 缩放
+            translateX:0,// x坐标
+            translateY:0,// y坐标
             }
         ],
 
@@ -177,9 +153,6 @@ export default {
            position:'relative',
            overflow:'hidden',
        
-
-
-
         },
         targetViewStyle:{
             position:'absolute',
@@ -218,7 +191,7 @@ export default {
             right:'10px',
             width:'100px',
         },
-
+ 
         title:'白酒定制',
         height:'400'
      }
@@ -239,7 +212,7 @@ export default {
             this.$refs.wddiyback.layerParameters = this.parameter2;           
         }
 
-
+      
         this.refreshDrawLayer(index,isScreenshot);
 
      },
@@ -260,7 +233,7 @@ export default {
       
         if (index == 0 ) {
             this.targetViewStyle.backgroundColor = 'red',
-            this.bgImg = "require('@/assets/imgs/redBoåttle.png')",
+            this.bgImg = "require('@/assets/imgs/redBottle.png')",
         
             this.targetViewStyle.left = "10%";
             this.targetViewStyle.width = '80%';
@@ -312,7 +285,6 @@ export default {
         this.$refs.layermanager.parameters =  this.$refs.wddiyback.layerParameters;
 
 
-
      },
 
      editText(){
@@ -358,7 +330,7 @@ export default {
                     
 
                     let url = canvas.toDataURL('image/png') 
-                    alert(url);
+             
                     params.push(url);
 
                     count += 1;
@@ -378,7 +350,7 @@ export default {
 
 
 
-            }, (index + 1) * 500);
+            }, (index + 1) * 1000);
 
 
         }
@@ -403,10 +375,16 @@ export default {
     //  图层改变后的回调
      layerChangeCallBack(parameters) {
         this.$refs.wddiyback.layerParameters = parameters; 
-        this.refreshDrawLayer(this.selectedIndex);
+        this.refreshDrawLayer(this.selectedIndex,false);
      },
-
-
+     // 开始移动
+     touchStartCallBack() {
+         this.$refs.wddiyback.showBorder(true);
+     },
+     // 结束移动
+     touchEndCallBack(){
+         this.$refs.wddiyback.showBorder(false);
+     },
      // 修改 参数
      touchMoveCallBack() {
           let selectedIndex = this.$refs.wddiyback.layerParameters.length - 1;
@@ -421,17 +399,19 @@ export default {
          let textLayerParameter = {
             type:0,
             textPara:{
-              title:'请输入文字',
-              color:'red',
+                title:'please enter words',
+                color:'black',
+                fontSize:'20px',
+                fontFamily:'',
             },
             angle:0,// 角度
             scale:1,// 缩放
             translateX:0,
             translateY:0,
          };
-
         this.$refs.wddiyback.layerParameters.push(textLayerParameter);
-        this.$refs.wddiyback.selectedIndex = this.$refs.wddiyback.layerParameters.length-1;
+        this.refreshDrawLayer(this.selectedIndex);
+
      },
     //  添加图片
      addImgLayer(fileUrls){
@@ -450,7 +430,7 @@ export default {
          };
 
         this.$refs.wddiyback.layerParameters.push(imgLayerParameter);
-        this.$refs.wddiyback.selectedIndex = this.$refs.wddiyback.layerParameters.length-1;
+        this.refreshDrawLayer(this.selectedIndex);
      },
 
 
@@ -471,8 +451,6 @@ export default {
   position:relative;
   width: 100%;
   overflow: hidden;
-
-
   /* flex: 1; */
    height:100%;
 }

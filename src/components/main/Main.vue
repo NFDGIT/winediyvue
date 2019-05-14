@@ -10,11 +10,9 @@
       <span class="refresh-hook">{{pulldownMsg}}</span>
     </div>
      
-
-
-     <PHCarouselView :imgs="['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557639448&di=8786eb933f6c5ad19ea3a7460524be58&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F414ce0ab1e61e0b2b98cabd5d3cd3d02522426922f1fb-pgvi2k_fw658',
-     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557639448&di=8786eb933f6c5ad19ea3a7460524be58&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F414ce0ab1e61e0b2b98cabd5d3cd3d02522426922f1fb-pgvi2k_fw658',
-     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557639448&di=8786eb933f6c5ad19ea3a7460524be58&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F414ce0ab1e61e0b2b98cabd5d3cd3d02522426922f1fb-pgvi2k_fw658']" 
+     <PHCarouselView :imgs="['http://pic.90sjimg.com/design/00/31/96/95/574ba412112f5.jpg',
+     'http://pic.90sjimg.com/design/00/31/96/95/574ba412112f5.jpg',
+     'http://pic.90sjimg.com/design/00/31/96/95/574ba412112f5.jpg']" 
      style="height:150px;width:100%;">
      </PHCarouselView>
      <MainFuncView @selectCell="funcClick"></MainFuncView>
@@ -41,8 +39,6 @@
 <script>
 
 
-
-
 import MainNaviView from '@/components/main/MainNaviView'
 
 import PHCarouselView from '@/components/common/PHCarouselView'
@@ -51,8 +47,6 @@ import MainFuncView from '@/components/main/MainFuncView'
 
 import MainCommendUserCell from  '@/components/main/MainCommendUserCell'
 import MainCommendGoodsCell from  '@/components/main/MainCommendGoodsCell'
-
-
 
 import BScroll from 'better-scroll'
 
@@ -68,18 +62,18 @@ export default {
       return{
         pulldownMsg: '下拉刷新',
         pullupMsg: '加载更多',
-        commendUsers:[{name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
-              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:''},
-              {name:'孙悟空',desc:'五百年前大闹天通',headImg:'',goodsImg:''}],
+        commendUsers:[{name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:'http://pic192.gtobal.com/image1/6A/78/wKgSE1HkERyAURulAABGbLPpViM601.jpg'},
+              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:'http://pic192.gtobal.com/image1/6A/78/wKgSE1HkERyAURulAABGbLPpViM601.jpg'},
+              {name:'孙悟空',desc:'五百年前大闹天通',headImg:'',goodsImg:'http://pic192.gtobal.com/image1/6A/78/wKgSE1HkERyAURulAABGbLPpViM601.jpg'}],
 
         commendGoods:[
-              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
-              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
-              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
-              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:''},
-              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:''},
-              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:''},
-              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:''}
+              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'孙悟空',desc:'五百年前大闹天空',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'},
+              {name:'江湖策划师',desc:'在一买一卖中,连接了整个江湖',headImg:'',goodsImg:'http://img.redocn.com/sheji/20180517/baijiubaozhuangsheji_9415243.jpg.285.jpg'}
 
               ]
       }
@@ -92,6 +86,7 @@ export default {
           })
         },
         funcClick(index){
+
            if (index == 0)
            {
               this.jumpToClassIntroduce();
